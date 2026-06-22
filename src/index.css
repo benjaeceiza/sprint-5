@@ -1,8 +1,37 @@
-
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #111418;
+    color: #E0E3E6;
+}
+
+/* --- MAIN AREA --- */
+.main-area {
+    flex: 1;
+    width: calc(100% - 296px);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin-left: 296px;
+}
+
+
+
+
+/* --- CONTENT AREA --- */
+.content-area {
+    flex: 1;;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+
 }

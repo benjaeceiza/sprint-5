@@ -1,0 +1,175 @@
+
+:root {
+  --sidebar-width: 296px;
+  --bg-dark: #1A1D21; 
+  --active-bg: #2C3036; 
+  --text-light: #E0E3E6;
+  --text-muted: #8E9197;
+  --accent-red: #EC1C24; 
+  --font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --- ESTILOS GENERALES Y DESKTOP  --- */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--bg-dark);
+  padding: 20px 25px; 
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3); 
+  display: flex;
+  flex-direction: column;
+  height: 100vh; 
+}
+
+/* Contenedor del Logo */
+.logo-container {
+  margin-bottom: 50px; 
+  display: flex;
+  align-items: center;
+}
+
+.santander-logo {
+  max-height: 40px; 
+}
+
+/* Navegación */
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin-bottom: 10px; 
+}
+
+/* Estilo de los Enlaces */
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-muted);
+  padding: 12px 18px; 
+  border-radius: 10px; 
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-family: var(--font-family);
+  font-size: 1rem;
+}
+
+.nav-link:hover {
+  background-color: #262a2e;
+  color: var(--text-light);
+}
+
+/* Estilo para el ÍTEM ACTIVO */
+.nav-item.active .nav-link {
+  background-color: var(--active-bg);
+  color: var(--text-light);
+  font-weight: 500; 
+}
+
+/* Íconos y Texto */
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px; 
+  font-size: 1.3rem; 
+  color: inherit; 
+}
+
+.nav-text {
+  /* Estilos específicos de texto si es necesario */
+}
+
+/* --- ESTILOS DEL PERFIL --- */
+.user-profile {
+  margin-top: auto; 
+  display: flex;
+  align-items: center;
+  background-color: #2C3036; 
+  padding: 8px 16px 8px 8px; 
+  border-radius: 50px; 
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.user-profile:hover {
+  background-color: #383d44; 
+}
+
+.user-avatar-icon {
+  font-size: 36px; 
+  color: #8E9197; 
+  margin-right: 12px; 
+}
+.user-name {
+  color: #E0E3E6;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+
+/* --- ESTILOS RESPONSIVE */
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: none; 
+  }
+
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5); 
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+}
+
+/* --- BOTÓN DE MENÚ  --- */
+.menu-toggle {
+    display: none; 
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001; 
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.3s ease-in-out;
+    padding: 0;
+    line-height: 1;
+}
+
+.menu-toggle.open {
+    color: var(--text-light);
+}
+
+@media (max-width: 1024px) {
+    .menu-toggle {
+        display: block; 
+    }
+}

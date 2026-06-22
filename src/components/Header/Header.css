@@ -1,0 +1,17 @@
+/* --- HEADER GLOBAL --- */
+.global-header {
+    height: 72px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    background-color: #111418;
+    border-bottom: 1px solid #2C3036;
+}
+
+.global-header h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+}
