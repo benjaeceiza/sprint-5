@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Procesador AMD Ryzen 5 8600G",
+    "code": "#8600",
+    "price": 350000,
+    "stock": 12,
+    "imageUrl": "https://picsum.photos/seed/cpu1/150"
+  },
+  {
+    "id": 2,
+    "name": "Motherboard MSI B650M",
+    "code": "#1024",
+    "price": 180000,
+    "stock": 8,
+    "imageUrl": "https://picsum.photos/seed/mobo1/150"
+  },
+  {
+    "id": 3,
+    "name": "Memoria RAM Kingston FURY DDR5 16GB",
+    "code": "#3341",
+    "price": 85000,
+    "stock": 25,
+    "imageUrl": "https://picsum.photos/seed/ram1/150"
+  },
+  {
+    "id": 4,
+    "name": "Disco Sólido SSD WD Blue 1TB M.2",
+    "code": "#9982",
+    "price": 95000,
+    "stock": 30,
+    "imageUrl": "https://picsum.photos/seed/ssd1/150"
+  },
+  {
+    "id": 5,
+    "name": "Fuente Corsair 650W 80+ Bronze",
+    "code": "#4512",
+    "price": 110000,
+    "stock": 15,
+    "imageUrl": "https://picsum.photos/seed/psu1/150"
+  },
+  {
+    "id": 6,
+    "name": "Gabinete Corsair 4000D Airflow",
+    "code": "#7763",
+    "price": 145000,
+    "stock": 5,
+    "imageUrl": "https://picsum.photos/seed/case1/150"
+  },
+  {
+    "id": 7,
+    "name": "Monitor LG UltraGear 24\" 144Hz",
+    "code": "#2234",
+    "price": 280000,
+    "stock": 10,
+    "imageUrl": "https://picsum.photos/seed/mon1/150"
+  },
+  {
+    "id": 8,
+    "name": "Teclado Mecánico Redragon Kumara",
+    "code": "#8812",
+    "price": 45000,
+    "stock": 40,
+    "imageUrl": "https://picsum.photos/seed/key1/150"
+  },
+  {
+    "id": 9,
+    "name": "Mouse Logitech G203 Lightsync",
+    "code": "#1123",
+    "price": 35000,
+    "stock": 55,
+    "imageUrl": "https://picsum.photos/seed/mouse1/150"
+  },
+  {
+    "id": 10,
+    "name": "Auriculares HyperX Cloud II",
+    "code": "#5567",
+    "price": 120000,
+    "stock": 18,
+    "imageUrl": "https://picsum.photos/seed/head1/150"
+  },
+  {
+    "id": 11,
+    "name": "Placa de Video NVIDIA RTX 4060 8GB",
+    "code": "#4060",
+    "price": 450000,
+    "stock": 7,
+    "imageUrl": "https://picsum.photos/seed/gpu1/150"
+  },
+  {
+    "id": 12,
+    "name": "Cooler CPU DeepCool AK400",
+    "code": "#9921",
+    "price": 55000,
+    "stock": 22,
+    "imageUrl": "https://picsum.photos/seed/cool1/150"
+  },
+  {
+    "id": 13,
+    "name": "Silla Gamer Corsair T3 Rush",
+    "code": "#7733",
+    "price": 390000,
+    "stock": 4,
+    "imageUrl": "https://picsum.photos/seed/chair1/150"
+  },
+  {
+    "id": 14,
+    "name": "Pad Mouse SteelSeries QcK Large",
+    "code": "#1190",
+    "price": 25000,
+    "stock": 60,
+    "imageUrl": "https://picsum.photos/seed/pad1/150"
+  },
+  {
+    "id": 15,
+    "name": "Micrófono HyperX QuadCast",
+    "code": "#8844",
+    "price": 160000,
+    "stock": 9,
+    "imageUrl": "https://picsum.photos/seed/mic1/150"
+  },
+  {
+    "id": 16,
+    "name": "Webcam Logitech C920 HD Pro",
+    "code": "#3322",
+    "price": 95000,
+    "stock": 14,
+    "imageUrl": "https://picsum.photos/seed/web1/150"
+  },
+  {
+    "id": 17,
+    "name": "Disco Rígido HDD Seagate 2TB",
+    "code": "#6643",
+    "price": 65000,
+    "stock": 28,
+    "imageUrl": "https://picsum.photos/seed/hdd1/150"
+  },
+  {
+    "id": 18,
+    "name": "Pasta Térmica Arctic MX-4 4g",
+    "code": "#1101",
+    "price": 12000,
+    "stock": 100,
+    "imageUrl": "https://picsum.photos/seed/paste1/150"
+  },
+  {
+    "id": 19,
+    "name": "Kit de Cables Sleeved Blancos",
+    "code": "#9909",
+    "price": 42000,
+    "stock": 16,
+    "imageUrl": "https://picsum.photos/seed/cable1/150"
+  },
+  {
+    "id": 20,
+    "name": "Router TP-Link Archer AX50 Wi-Fi 6",
+    "code": "#5532",
+    "price": 85000,
+    "stock": 11,
+    "imageUrl": "https://picsum.photos/seed/router1/150"
+  }
+]

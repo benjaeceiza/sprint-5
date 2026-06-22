@@ -1,17 +1,85 @@
-/* --- HEADER GLOBAL --- */
 .global-header {
-    height: 72px;
-    flex-shrink: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    background-color: #111418;
-    border-bottom: 1px solid #2C3036;
+  height: 72px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0 40px;
+  background-color: #111418;
+  border-bottom: 1px solid #2C3036;
 }
 
 .global-header h2 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+  color: #E0E3E6;
+}
+
+/* --- ESTILOS DE LA BARRA DE BÚSQUEDA --- */
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #1A1D21;
+  border: 1px solid #2C3036;
+  border-radius: 20px; 
+  padding: 8px 16px;
+  width: 300px; 
+  transition: border-color 0.2s ease;
+}
+
+
+.search-container:focus-within {
+  border-color: #8E9197; 
+}
+
+.search-icon {
+  color: #8E9197;
+  font-size: 1.2rem;
+  margin-right: 12px;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  color: #E0E3E6;
+  font-size: 0.95rem;
+  width: 100%;
+  outline: none; 
+}
+
+.search-input::placeholder {
+  color: #8E9197;
+}
+
+/* --- CONTENEDOR DE ACCIONES (Derecha del Header) --- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px; 
+}
+
+/* --- BOTÓN AGREGAR EN EL HEADER --- */
+.btn-add-header {
+  display: flex;
+  align-items: center;
+  background-color: #383d44; 
+  color: #E0E3E6;
+  border: none;
+  padding: 8px 10px; 
+  border-radius: 50px;
+  font-size: small;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  height: 100%; 
+}
+
+.btn-add-header:hover {
+  background-color: #4a515a;
+}
+
+.add-icon {
+  font-size: 1.1rem;
+  margin-right: 8px; 
 }

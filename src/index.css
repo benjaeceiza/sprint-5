@@ -28,10 +28,17 @@
 
 /* --- CONTENT AREA --- */
 .content-area {
-    flex: 1;;
+    flex: 1;
     overflow-y: auto;
     display: flex;
     justify-content: center;
     padding: 24px;
 
+}
+
+@media(max-width:1024px){
+   .main-area{
+    width: 100%;
+    margin-left: 0;
+   }
 }

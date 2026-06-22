@@ -93,6 +93,11 @@
 .btn-secondary {
   background-color: transparent;
   color: #8E9197;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: small;
+  padding: 8px;
+   border-radius: 20px;
 }
 
 .btn-secondary:hover {
@@ -102,6 +107,11 @@
 .btn-primary {
   background-color: #383d44; 
   color: #E0E3E6;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: small;
+  padding: 8px;
+  border-radius: 20px;
 }
 
 .btn-primary:hover {

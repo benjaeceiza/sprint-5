@@ -1,0 +1,68 @@
+/* --- CONTENEDOR GENERAL --- */
+.products-container {
+  width: 100%;
+  max-width: 900px; 
+
+}
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; 
+}
+
+/* --- TARJETA DE CADA PRODUCTO --- */
+.product-item {
+  background-color: #1A1D21; 
+  border-radius: 12px;
+  padding: 12px 24px 12px 12px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+    text-decoration: none; 
+}
+
+.product-item:hover {
+  background-color: #2C3036; 
+}
+
+/* --- LADO IZQUIERDO (Imagen + Textos) --- */
+.product-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.product-image {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover; 
+  flex-shrink: 0;
+  background-color: #1A1D21; 
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; 
+}
+
+.product-name {
+  color: #E0E3E6;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.product-code {
+  color: #8E9197;
+  font-size: 0.85rem;
+}
+
+/* --- LADO DERECHO (Flechita) --- */
+.product-chevron {
+  color: #8E9197;
+  font-size: 1rem;
+}

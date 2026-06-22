@@ -34,16 +34,21 @@
   margin-bottom: 50px; 
   display: flex;
   align-items: center;
+
 }
 
-.santander-logo {
-  max-height: 40px; 
+.logo {
+  max-height: 80px;
+  margin: auto; 
+  
 }
 
 /* Navegación */
 .nav {
   display: flex;
   flex-direction: column;
+ border-top: 1px solid #656567; 
+  padding-top: 20px;
 }
 
 .nav-links {

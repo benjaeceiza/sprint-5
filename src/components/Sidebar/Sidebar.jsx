@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FaHome, FaBoxOpen, FaAngleLeft,FaUserCircle } from "react-icons/fa";
 import { MdStore } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
+import logo from "../../assets/logo.png";
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -16,7 +17,7 @@ const Sidebar = () => {
     const navLinks = [
         { to: "/", text: "Inicio", icon: <FaHome /> },
         { to: "/products", text: "Productos", icon: <FaBoxOpen /> },
-        { to: "/stores", text: "Tiendas", icon: <MdStore /> },
+        { to: "/categories", text: "Categorías", icon: <MdStore /> },
     ];
 
     return (
@@ -27,7 +28,7 @@ const Sidebar = () => {
 
             <div className={`sidebar ${isOpen ? 'open' : ''}`}>
                 <div className="logo-container">
-                    <img src="/path/to/santander-logo.png" alt="Santander Logo" className="santander-logo" />
+                    <img src={logo} alt="Logo" className="logo" />
                 </div>
 
                 <nav className="nav">
