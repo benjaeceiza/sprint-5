@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from "react-router-dom";
-import { FaHome, FaBoxOpen, FaAngleLeft,FaUserCircle } from "react-icons/fa";
+import { FaHome, FaBoxOpen, FaUserCircle } from "react-icons/fa";
 import { MdStore } from "react-icons/md";
-import { FiMenu } from "react-icons/fi";
 import logo from "../../assets/logo.png";
 import "./Sidebar.css";
 
-const Sidebar = () => {
-    const [isOpen, setIsOpen] = useState(false);
+// 1. Recibimos isOpen y toggleSidebar como props
+const Sidebar = ({ isOpen, toggleSidebar }) => {
     const location = useLocation();
-
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
-    };
 
     const navLinks = [
         { to: "/", text: "Inicio", icon: <FaHome /> },
@@ -22,9 +17,7 @@ const Sidebar = () => {
 
     return (
         <>
-            <button className={`menu-toggle ${isOpen ? 'open' : ''}`} onClick={toggleSidebar}>
-                {isOpen ? <FaAngleLeft /> : <FiMenu />}
-            </button>
+            {/* 2. Eliminamos el <button> que estaba acá arriba */}
 
             <div className={`sidebar ${isOpen ? 'open' : ''}`}>
                 <div className="logo-container">
@@ -35,7 +28,8 @@ const Sidebar = () => {
                     <ul className="nav-links">
                         {navLinks.map((link) => (
                             <li key={link.to} className={`nav-item ${location.pathname === link.to ? 'active' : ''}`}>
-                                <Link to={link.to} className="nav-link" onClick={() => setIsOpen(false)}>
+                                {/* Al hacer click en un link, cerramos el menú en mobile */}
+                                <Link to={link.to} className="nav-link" onClick={() => toggleSidebar()}>
                                     <span className="nav-icon">{link.icon}</span>
                                     <span className="nav-text">{link.text}</span>
                                 </Link>
@@ -44,7 +38,6 @@ const Sidebar = () => {
                     </ul>
                 </nav>
 
-                {/* --- PERFIL DEL USUARIO  --- */}
                 <Link to="/profile" className="user-profile">
                     <FaUserCircle className="user-avatar-icon" />
                     <span className="user-name">Usuario</span>

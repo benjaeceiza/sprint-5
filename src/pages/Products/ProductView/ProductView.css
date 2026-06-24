@@ -1,0 +1,310 @@
+/* --- CONTENEDOR GENERAL --- */
+.product-view-container {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; 
+}
+
+/* --- CABECERA DEL PRODUCTO --- */
+.product-summary {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.summary-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  background-color: #1A1D21;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #E0E3E6;
+}
+
+.summary-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.stat-number {
+  font-size: 1.2rem;
+  color: #E0E3E6;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #8E9197;
+  letter-spacing: 0.5px;
+}
+
+/* Etiqueta de tienda estilo píldora */
+.store-badge {
+  display: flex;
+  align-items: center;
+  background-color: #1A1D21;
+  padding: 4px 12px 4px 4px;
+  border-radius: 50px;
+  gap: 8px;
+  border: 1px solid #2C3036;
+}
+
+.store-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.store-name {
+  font-size: 0.85rem;
+  color: #E0E3E6;
+  font-weight: 500;
+}
+
+/* --- SECCIONES DE FORMULARIO --- */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #E0E3E6;
+  border-bottom: 1px solid #2C3036;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 450px; 
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  color: #E0E3E6;
+  font-weight: 400;
+}
+
+/* Estilos compartidos para Inputs y Selects */
+.input-group input[type="text"],
+.input-group .input-number,
+.input-group select {
+  background-color: transparent;
+  border: 1px solid #4a4d52; 
+  color: #8E9197;
+  padding: 10px 16px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+/* Estilo para el Textarea */
+.input-group textarea {
+  background-color: transparent;
+  border: 1px solid #4a4d52;
+  color: #8E9197;
+  padding: 12px 16px;
+  border-radius: 12px; 
+  font-size: 0.95rem;
+  outline: none;
+  resize: vertical; 
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  border-color: #8E9197;
+  color: #E0E3E6;
+}
+
+/* --- CONTADOR DE STOCK --- */
+.stock-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  border: 1px solid #4a4d52;
+  border-radius: 50px;
+  width: 120px;
+  padding: 4px;
+}
+
+.counter-btn {
+  background: transparent;
+  border: none;
+  color: #E0E3E6;
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.counter-btn:hover {
+  background-color: #2C3036;
+}
+
+.counter-input {
+  background: transparent;
+  border: none;
+  color: #E0E3E6;
+  text-align: center;
+  width: 40px;
+  font-size: 0.95rem;
+  outline: none;
+  font-weight: 500;
+}
+
+/* Ocultar las flechitas por defecto del input number */
+.counter-input::-webkit-outer-spin-button,
+.counter-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* --- BOTÓN DE ELIMINAR --- */
+.btn-delete {
+  margin-left: auto; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color:white;
+  border: 1px solid #EC1C24;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: fit-content; 
+}
+
+.btn-delete:hover {
+  background-color: rgba(236, 28, 36, 0.1); 
+}
+
+.delete-icon {
+  font-size: 1.1rem;
+}
+
+/* --- ESTILOS DEL LOADER DE IMAGEN --- */
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px; 
+
+}
+
+/* El efecto de carga (brillo de izquierda a derecha) */
+.skeleton-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1A1D21;
+  background-image: linear-gradient(90deg, #1A1D21 0px, #2C3036 40px, #1A1D21 80px);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.real-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.real-image.hidden {
+  opacity: 0;
+}
+
+.real-image.visible {
+  opacity: 1; 
+}
+
+
+/* =========================================
+   RESPONSIVE: VISTA DE PRODUCTO (<= 768px)
+   ========================================= */
+@media (max-width: 768px) {
+  .product-view-container {
+    gap: 24px;
+  }
+
+  /* Apilamos la imagen y los detalles */
+  .product-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  /* Hacemos la foto un poco más grande en mobile para que luzca */
+  .summary-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Apilamos las estadísticas (precio, stock) */
+  .summary-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* El botón de eliminar baja y ocupa todo el ancho */
+  .btn-delete {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  /* Los inputs pasan a ocupar todo el espacio disponible */
+  .input-group {
+    max-width: 100%;
+  }
+}
