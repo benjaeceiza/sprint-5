@@ -17,6 +17,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
     return (
         <>
+            {/* 2. Eliminamos el <button> que estaba acá arriba */}
+
             <div className={`sidebar ${isOpen ? 'open' : ''}`}>
                 <div className="logo-container">
                     <img src={logo} alt="Logo" className="logo" />
@@ -26,7 +28,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                     <ul className="nav-links">
                         {navLinks.map((link) => (
                             <li key={link.to} className={`nav-item ${location.pathname === link.to ? 'active' : ''}`}>
-        
+                                {/* Al hacer click en un link, cerramos el menú en mobile */}
                                 <Link to={link.to} className="nav-link" onClick={() => toggleSidebar()}>
                                     <span className="nav-icon">{link.icon}</span>
                                     <span className="nav-text">{link.text}</span>
