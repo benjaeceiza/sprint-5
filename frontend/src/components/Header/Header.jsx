@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useMatch, Link, useNavigate } from "react-router-dom"; 
-import { FiSearch, FiPlus, FiMenu, FiX } from 'react-icons/fi'; 
+import { useLocation, useMatch, Link, useNavigate } from "react-router-dom";
+import { FiSearch, FiPlus, FiMenu, FiX } from 'react-icons/fi';
 import './Header.css';
 
 const Header = ({ toggleSidebar }) => {
     const location = useLocation();
-    const navigate = useNavigate(); 
-    
+    const navigate = useNavigate();
+
     const [isSearchActive, setIsSearchActive] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
-    
+
     // Estado para guardar el código real que viene del backend
-    const [productCode, setProductCode] = useState(''); 
+    const [productCode, setProductCode] = useState('');
 
     const isProductList = location.pathname === "/products";
     const productMatch = useMatch("/products/:id");
@@ -20,22 +20,24 @@ const Header = ({ toggleSidebar }) => {
 
     //  Consumimos la API en el Header para obtener el código dinámico
     useEffect(() => {
-        if (isProductView && productId) {
+        if (isProductView && productId && productId !== 'new') {
             fetch(`http://localhost:3000/api/products/${productId}`)
                 .then(res => res.json())
                 .then(data => {
-                    if(data.code) setProductCode(data.code);
+                    if (data.code) setProductCode(data.code);
                 })
                 .catch(err => console.error("Error al buscar código del producto:", err));
+        } else if (productId === 'new') {
+            setProductCode(''); // Limpiamos el código si es un producto nuevo
         }
     }, [isProductView, productId]);
 
     const getHeaderTitle = () => {
         if (location.pathname === "/") return "¡Hola Benja!";
         if (isProductList) return "Productos";
-        
+
         if (isProductView) {
-       
+
             const displayCode = productCode ? productCode : `#${productId}`;
             return (
                 <span className="breadcrumb">
@@ -46,7 +48,7 @@ const Header = ({ toggleSidebar }) => {
 
         if (location.pathname.startsWith("/stores")) return "Tiendas";
         if (location.pathname.startsWith("/profile")) return "Perfil";
-        
+
         return "Dashboard";
     };
 
@@ -65,8 +67,8 @@ const Header = ({ toggleSidebar }) => {
 
     const closeSearch = () => {
         setIsSearchActive(false);
-        setSearchTerm(''); 
-        navigate('/products'); 
+        setSearchTerm('');
+        navigate('/products');
     };
 
     // ELIMINAR DESDE EL HEADER
@@ -88,7 +90,7 @@ const Header = ({ toggleSidebar }) => {
 
     return (
         <header className="global-header">
-            
+
             <div className={`header-left ${isSearchActive ? 'hide-on-mobile-search' : ''}`}>
                 <button className="mobile-menu-btn" onClick={toggleSidebar}>
                     <FiMenu />
@@ -98,7 +100,7 @@ const Header = ({ toggleSidebar }) => {
 
             {isProductList && (
                 <div className={`header-actions ${isSearchActive ? 'search-active' : ''}`}>
-                    
+
                     {isSearchActive && (
                         <button className="close-search-btn" onClick={closeSearch}>
                             <FiX />
@@ -108,18 +110,18 @@ const Header = ({ toggleSidebar }) => {
                     {/* Prevenimos el submit por defecto */}
                     <form className="search-container" onClick={() => setIsSearchActive(true)} onSubmit={(e) => e.preventDefault()}>
                         <FiSearch className="search-icon left-icon" />
-                        <input 
-                            type="text" 
-                            placeholder="Buscar productos" 
+                        <input
+                            type="text"
+                            placeholder="Buscar productos"
                             className="search-input"
                             value={searchTerm}
-                            onChange={handleInputChange} 
+                            onChange={handleInputChange}
                         />
-                        <button type="submit" style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer'}}>
+                        <button type="submit" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
                             <FiSearch className="search-icon right-icon" />
                         </button>
                     </form>
-                    
+
                     <Link className="btn-add-header" to="/products/new">
                         <FiPlus className="add-icon" />
                         <span className="btn-text">Agregar Producto</span>

@@ -12,4 +12,7 @@ router.get('/:id', productController.getProductById);
 router.put('/:id/edit', productController.updateProduct);
 router.delete('/:id/delete', productController.deleteProduct);
 
+// Endpoint para crear un nuevo producto
+router.post('/new', productController.createProduct);
+
 module.exports = router;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ImageWithLoader from '../../../components/ImageWithLoader/ImageWithLoader';
 import { FiLoader } from 'react-icons/fi';
+import { getProductById, updateProduct } from '../../../services/productService';
 import './ProductView.css';
 
 const ProductView = () => {
@@ -9,18 +10,14 @@ const ProductView = () => {
     const navigate = useNavigate();
 
     // Estados para los datos de la API
-    const [originalProduct, setOriginalProduct] = useState(null); // Copia fiel de la DB
+    const [originalProduct, setOriginalProduct] = useState(null); // Copia  de la DB
     const [product, setProduct] = useState(null); // Estado editable
     const [isLoading, setIsLoading] = useState(true);
     const [errorMsg, setErrorMsg] = useState(''); // Para mostrar errores visuales de validación
 
-    // Traemos el producto desde el backend
+    // Traemos el producto usando el Service
     useEffect(() => {
-        fetch(`http://localhost:3000/api/products/${id}`)
-            .then(res => {
-                if (!res.ok) throw new Error("Producto no encontrado");
-                return res.json();
-            })
+        getProductById(id)
             .then(data => {
                 setProduct(data);
                 setOriginalProduct(data);
@@ -46,7 +43,7 @@ const ProductView = () => {
         handleChange('stock', newStock);
     };
 
-    // VALIDACIÓN Y ENVÍO (PUT)
+    // VALIDACIÓN Y ENVÍO (PUT a través del Service)
     const handleSave = async () => {
         // 1. Control de Nombre Requerido
         if (!product.name || product.name.trim() === '') {
@@ -69,22 +66,16 @@ const ProductView = () => {
         };
 
         try {
-            const response = await fetch(`http://localhost:3000/api/products/${id}/edit`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(updatedProduct)
-            });
-
-            if (response.ok) {
-                alert("¡Producto guardado exitosamente en la API Rest!");
-                // Actualizamos la pantalla con los datos sanitizados y reseteamos los botones
-                setProduct(updatedProduct);
-                setOriginalProduct(updatedProduct); 
-            } else {
-                alert("Hubo un error en el servidor al intentar guardar.");
-            }
+            // Usamos la función de updateProduct del Service en lugar del fetch
+            await updateProduct(id, updatedProduct);
+            
+            alert("¡Producto guardado exitosamente en la API Rest!");
+            // Actualizamos la pantalla con los datos sanitizados y reseteamos los botones
+            setProduct(updatedProduct);
+            setOriginalProduct(updatedProduct); 
         } catch (error) {
             console.error("Error al guardar:", error);
+            alert("Hubo un error en el servidor al intentar guardar.");
         }
     };
 

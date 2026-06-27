@@ -6,6 +6,7 @@ import ProductView from "./pages/Products/ProductView/ProductView";
 import Profile from "./pages/Profile/Profile";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header"; 
+import ProductNew from "./pages/Products/ProductNew/ProductNew";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<ProductsList />} />
               <Route path="/products/:id" element={<ProductView />} />
+              <Route path="/products/new" element={<ProductNew />} />
               <Route path="*" element={<Profile />} />
             </Routes>
           </div>

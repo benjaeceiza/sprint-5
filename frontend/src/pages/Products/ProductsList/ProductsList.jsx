@@ -3,6 +3,7 @@ import { useLocation, Link } from 'react-router-dom';
 import { FaChevronRight } from 'react-icons/fa';
 import { FiLoader, FiSearch } from 'react-icons/fi';
 import './ProductsList.css';
+import { getProducts } from '../../../services/productService';
 
 const ProductsList = () => {
     const location = useLocation();
@@ -17,16 +18,14 @@ const ProductsList = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                
-                const response = await fetch('http://localhost:3000/api/products');
-                const data = await response.json();
+            
+                const productos = await getProducts(); 
+                setProducts(productos);
 
-                // Guardamos los datos reales de la base de datos en el estado
-                setProducts(data);
             } catch (error) {
                 console.error("❌ Error al cargar los productos de la API:", error);
             } finally {
-                // Apagamos la ruedita de carga, haya funcionado o haya fallado
+                // Apagamos la ruedita de carga
                 setIsLoading(false);
             }
         };
