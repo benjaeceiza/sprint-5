@@ -5,6 +5,7 @@ import { FiLoader } from 'react-icons/fi';
 // Importamos la función de crear desde tu nuevo servicio
 import { createProduct } from '../../../services/productService'; 
 import '../ProductView/ProductView.css'; 
+import './ProductNew.css';
 
 const ProductNew = () => {
     const navigate = useNavigate();
@@ -212,7 +213,7 @@ const ProductNew = () => {
                         value={product.category_id} 
                         onChange={(e) => handleChange('category_id', e.target.value)}
                     >
-                        <option value="" disabled>Selecciona una categoría</option>
+                        <option className="select-option" value="" disabled>Selecciona una categoría</option>
                         {categories.map(cat => (
                             <option className="select-option" key={cat.id} value={cat.id}>{cat.name}</option>
                         ))}
@@ -258,8 +259,8 @@ const ProductNew = () => {
                 <div className="input-group">
                     <label>Tienda Propietaria</label>
                     <select value={product.store_id} onChange={(e) => handleChange('store_id', e.target.value)}>
-                        <option value="1">Tienda Principal</option>
-                        <option value="2">Otra Tienda</option>
+                        <option className="select-option" value="1">Tienda Principal</option>
+                        <option className="select-option" value="2">Otra Tienda</option>
                     </select>
                 </div>
 

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ImageWithLoader from '../../../components/ImageWithLoader/ImageWithLoader';
 import { FiLoader } from 'react-icons/fi';
 import { getProductById, updateProduct } from '../../../services/productService';
+import NotFound from '../../NotFound/NotFound';
 import './ProductView.css';
 
 const ProductView = () => {
@@ -14,6 +15,7 @@ const ProductView = () => {
     const [product, setProduct] = useState(null); // Estado editable
     const [isLoading, setIsLoading] = useState(true);
     const [errorMsg, setErrorMsg] = useState(''); // Para mostrar errores visuales de validación
+    const [productNotFound, setProductNotFound] = useState(false);
 
     // Traemos el producto usando el Service
     useEffect(() => {
@@ -26,6 +28,7 @@ const ProductView = () => {
             .catch(err => {
                 console.error("Error:", err);
                 setProduct(null);
+                setProductNotFound(true); // avisamos que no se encontró el producto
                 setIsLoading(false);
             });
     }, [id]);
@@ -68,11 +71,11 @@ const ProductView = () => {
         try {
             // Usamos la función de updateProduct del Service en lugar del fetch
             await updateProduct(id, updatedProduct);
-            
+
             alert("¡Producto guardado exitosamente en la API Rest!");
             // Actualizamos la pantalla con los datos sanitizados y reseteamos los botones
             setProduct(updatedProduct);
-            setOriginalProduct(updatedProduct); 
+            setOriginalProduct(updatedProduct);
         } catch (error) {
             console.error("Error al guardar:", error);
             alert("Hubo un error en el servidor al intentar guardar.");
@@ -106,44 +109,40 @@ const ProductView = () => {
         );
     }
 
-    if (!product) {
-        return (
-            <div className="product-view-container">
-                <h2 style={{ color: '#E0E3E6' }}>Producto no encontrado</h2>
-            </div>
-        );
+    if (productNotFound || !product) {
+        return <NotFound />;
     }
 
     return (
         <div className="product-view-container">
-            
+
             {/* --- COMPONENTE RESUMEN (De un vistazo) --- */}
             <div className="product-summary">
-                <ImageWithLoader 
-                    src={product.imageUrl} 
-                    alt={`Imagen de ${product.name}`} 
-                    className="summary-image" 
+                <ImageWithLoader
+                    src={product.imageUrl}
+                    alt={`Imagen de ${product.name}`}
+                    className="summary-image"
                 />
-                
+
                 <div className="summary-details">
                     <h3 className="summary-title">{product.name}</h3>
-                    
+
                     <div className="summary-stats">
                         <span className="stat-item">
-                            <strong className="stat-number">${Number(product.price || 0).toLocaleString('es-AR')}</strong> 
+                            <strong className="stat-number">${Number(product.price || 0).toLocaleString('es-AR')}</strong>
                             <span className="stat-label">PRECIO</span>
                         </span>
-                        
+
                         <span className="stat-item">
-                            <strong className="stat-number">{product.stock || 0}</strong> 
+                            <strong className="stat-number">{product.stock || 0}</strong>
                             <span className="stat-label">STOCK DISPONIBLE</span>
                         </span>
-                        
+
                         <div className="store-badge" onClick={() => navigate('/stores/1')} style={{ cursor: 'pointer' }}>
-                            <img 
-                                src="https://i.pravatar.cc/150?img=11" 
-                                alt="Tienda Avatar" 
-                                className="store-avatar" 
+                            <img
+                                src="https://i.pravatar.cc/150?img=11"
+                                alt="Tienda Avatar"
+                                className="store-avatar"
                             />
                             <span className="store-name">Tienda Principal</span>
                         </div>
@@ -160,20 +159,20 @@ const ProductView = () => {
 
                 <div className="input-group">
                     <label>Nombre *</label>
-                    <input 
-                        type="text" 
-                        value={product.name} 
-                        onChange={(e) => handleChange('name', e.target.value)} 
+                    <input
+                        type="text"
+                        value={product.name}
+                        onChange={(e) => handleChange('name', e.target.value)}
                         style={{ border: errorMsg ? '1px solid #EC1C24' : '' }}
                     />
                 </div>
 
                 <div className="input-group">
                     <label>Valor (Entero)</label>
-                    <input 
-                        type="number" 
-                        className="input-number" 
-                        value={product.price} 
+                    <input
+                        type="number"
+                        className="input-number"
+                        value={product.price}
                         onChange={(e) => handleChange('price', e.target.value)} // Guardamos temporalmente el texto tipeado
                     />
                 </div>
@@ -182,11 +181,11 @@ const ProductView = () => {
                     <label>Stock</label>
                     <div className="stock-counter">
                         <button type="button" className="counter-btn" onClick={() => handleStockClick(-1)}>-</button>
-                        <input 
-                            type="number" 
-                            value={product.stock} 
-                            onChange={(e) => handleChange('stock', e.target.value)} 
-                            className="counter-input" 
+                        <input
+                            type="number"
+                            value={product.stock}
+                            onChange={(e) => handleChange('stock', e.target.value)}
+                            className="counter-input"
                         />
                         <button type="button" className="counter-btn" onClick={() => handleStockClick(1)}>+</button>
                     </div>
@@ -194,7 +193,7 @@ const ProductView = () => {
 
                 <div className="input-group">
                     <label>Descripción</label>
-                    <textarea 
+                    <textarea
                         rows="5"
                         value={product.description || ''}
                         onChange={(e) => handleChange('description', e.target.value)}
@@ -217,15 +216,15 @@ const ProductView = () => {
                 <div className="input-group">
                     <label>URL de la Imagen Principal</label>
                     <div style={{ display: 'flex', gap: '10px' }}>
-                        <input 
-                            type="text" 
-                            placeholder="https://..." 
-                            value={product.imageUrl || ''} 
-                            onChange={(e) => handleChange('imageUrl', e.target.value)} 
+                        <input
+                            type="text"
+                            placeholder="https://..."
+                            value={product.imageUrl || ''}
+                            onChange={(e) => handleChange('imageUrl', e.target.value)}
                             style={{ flex: 1 }}
                         />
-                        <button 
-                            type="button" 
+                        <button
+                            type="button"
                             onClick={() => handleChange('imageUrl', '')}
                             style={{ padding: '0 15px', backgroundColor: '#383d44', color: '#E0E3E6', border: 'none', borderRadius: '8px', cursor: 'pointer' }}
                         >
@@ -238,35 +237,35 @@ const ProductView = () => {
             {/* --- BOTONES AL FINAL DEL FORMULARIO --- */}
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '15px', marginTop: '30px' }}>
                 {/* Cancelar se activa si hay cambios */}
-                <button 
+                <button
                     type="button"
                     onClick={handleCancel}
                     disabled={!hasChanges}
-                    style={{ 
-                        padding: '12px 24px', 
-                        backgroundColor: 'transparent', 
-                        color: hasChanges ? '#E0E3E6' : '#4a4d52', 
-                        border: `1px solid ${hasChanges ? '#2C3036' : '#1A1D21'}`, 
-                        borderRadius: '50px', 
-                        cursor: hasChanges ? 'pointer' : 'not-allowed', 
-                        fontWeight: 'bold' 
+                    style={{
+                        padding: '12px 24px',
+                        backgroundColor: 'transparent',
+                        color: hasChanges ? '#E0E3E6' : '#4a4d52',
+                        border: `1px solid ${hasChanges ? '#2C3036' : '#1A1D21'}`,
+                        borderRadius: '50px',
+                        cursor: hasChanges ? 'pointer' : 'not-allowed',
+                        fontWeight: 'bold'
                     }}
                 >
                     Cancelar
                 </button>
-                
+
                 {/* Guardar se activa si hay cambios Y si el nombre no está vacío */}
-                <button 
+                <button
                     type="button"
                     onClick={handleSave}
                     disabled={!hasChanges || !isNameValid}
-                    style={{ 
-                        padding: '12px 32px', 
-                        backgroundColor: (hasChanges && isNameValid) ? '#EC1C24' : '#2C3036', 
-                        color: (hasChanges && isNameValid) ? '#FFF' : '#8E9197', 
-                        border: 'none', 
-                        borderRadius: '50px', 
-                        cursor: (hasChanges && isNameValid) ? 'pointer' : 'not-allowed', 
+                    style={{
+                        padding: '12px 32px',
+                        backgroundColor: (hasChanges && isNameValid) ? '#EC1C24' : '#2C3036',
+                        color: (hasChanges && isNameValid) ? '#FFF' : '#8E9197',
+                        border: 'none',
+                        borderRadius: '50px',
+                        cursor: (hasChanges && isNameValid) ? 'pointer' : 'not-allowed',
                         fontWeight: 'bold',
                         fontSize: '1rem',
                         transition: 'all 0.3s ease'
