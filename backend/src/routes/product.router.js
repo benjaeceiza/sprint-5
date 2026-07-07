@@ -4,7 +4,7 @@ const router = express.Router();
 // Importamos el controlador que creamos en el paso anterior
 const productController = require('../controllers/productController');
 
-// 
+// Rutas para obtener todos los productos y un producto específico por ID
 router.get('/', productController.getAllProducts);
 router.get('/:id', productController.getProductById);
 

@@ -1,31 +1,35 @@
 /* --- CONTENEDOR GENERAL --- */
 .products-container {
   width: 100%;
-  max-width: 900px; 
+
 
 }
 
 .products-list {
   display: flex;
   flex-direction: column;
-  gap: 12px; 
+  align-items: center;
+  gap: 12px;
 }
 
 /* --- TARJETA DE CADA PRODUCTO --- */
 .product-item {
-  background-color: #1A1D21; 
+  background-color: #1A1D21;
   border-radius: 12px;
-  padding: 12px 24px 12px 12px; 
+  padding: 12px 24px 12px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   transition: background-color 0.2s ease;
-    text-decoration: none; 
+  text-decoration: none;
+  width: 100%;
+  max-width: 1200px;
+
 }
 
 .product-item:hover {
-  background-color: #2C3036; 
+  background-color: #2C3036;
 }
 
 /* --- LADO IZQUIERDO (Imagen + Textos) --- */
@@ -39,15 +43,15 @@
   width: 56px;
   height: 56px;
   border-radius: 8px;
-  object-fit: cover; 
+  object-fit: cover;
   flex-shrink: 0;
-  background-color: #1A1D21; 
+  background-color: #1A1D21;
 }
 
 .product-details {
   display: flex;
   flex-direction: column;
-  gap: 4px; 
+  gap: 4px;
 }
 
 .product-name {
@@ -61,7 +65,7 @@
   font-size: 0.85rem;
 }
 
-/* --- LADO DERECHO (Flechita) --- */
+/* --- LADO DERECHO --- */
 .product-chevron {
   color: #8E9197;
   font-size: 1rem;

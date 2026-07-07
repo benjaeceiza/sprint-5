@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useMatch, Link, useNavigate } from "react-router-dom";
 import { FiSearch, FiPlus, FiMenu, FiX } from 'react-icons/fi';
+import { getProductById, deleteProduct } from '../../services/productService';
 import './Header.css';
 
 const Header = ({ toggleSidebar }) => {
@@ -14,15 +15,17 @@ const Header = ({ toggleSidebar }) => {
     const [productCode, setProductCode] = useState('');
 
     const isProductList = location.pathname === "/products";
+    const isCategoryList = location.pathname === "/categories";
+    const isStoreList = location.pathname === "/tienda";
+
     const productMatch = useMatch("/products/:id");
     const isProductView = productMatch !== null;
     const productId = productMatch?.params?.id;
 
-    //  Consumimos la API en el Header para obtener el código dinámico
+    // Consumimos la API usando el Service para obtener el código dinámico
     useEffect(() => {
         if (isProductView && productId && productId !== 'new') {
-            fetch(`http://localhost:3000/api/products/${productId}`)
-                .then(res => res.json())
+            getProductById(productId)
                 .then(data => {
                     if (data.code) setProductCode(data.code);
                 })
@@ -32,12 +35,14 @@ const Header = ({ toggleSidebar }) => {
         }
     }, [isProductView, productId]);
 
+    // Función inteligente para cambiar el título según la ruta
     const getHeaderTitle = () => {
-        if (location.pathname === "/") return "¡Hola Benja!";
+        if (location.pathname === "/") return "¡Hola Usuario!";
         if (isProductList) return "Productos";
+        if (isCategoryList) return "Categorías";
+        if (isStoreList) return "Tiendas";
 
         if (isProductView) {
-
             const displayCode = productCode ? productCode : `#${productId}`;
             return (
                 <span className="breadcrumb">
@@ -55,9 +60,8 @@ const Header = ({ toggleSidebar }) => {
     // FUNCIÓN PARA LA BÚSQUEDA EN TIEMPO REAL
     const handleInputChange = (e) => {
         const value = e.target.value;
-        setSearchTerm(value); // Actualizamos el input visualmente
+        setSearchTerm(value);
 
-        // Y automáticamente se cambia la URL en cada pulsación
         if (!value.trim()) {
             navigate('/products', { replace: true });
         } else {
@@ -71,17 +75,13 @@ const Header = ({ toggleSidebar }) => {
         navigate('/products');
     };
 
-    // ELIMINAR DESDE EL HEADER
+    // ELIMINAR USANDO EL SERVICE
     const handleDeleteProduct = async () => {
         if (window.confirm("¿Estás seguro de que querés eliminar este producto? Esta acción no se puede deshacer.")) {
             try {
-                const response = await fetch(`http://localhost:3000/api/products/${productId}/delete`, {
-                    method: 'DELETE'
-                });
-                if (response.ok) {
-                    alert("¡Producto eliminado correctamente de la base de datos!");
-                    navigate('/products'); // Lo mandamos al listado de nuevo
-                }
+                await deleteProduct(productId);
+                alert("¡Producto eliminado correctamente de la base de datos!");
+                navigate('/products'); // Lo mandamos al listado de nuevo
             } catch (error) {
                 console.error("Error al eliminar:", error);
             }
@@ -98,16 +98,15 @@ const Header = ({ toggleSidebar }) => {
                 <h2>{getHeaderTitle()}</h2>
             </div>
 
+            {/* --- ACCIONES PARA LA VISTA DE PRODUCTOS --- */}
             {isProductList && (
                 <div className={`header-actions ${isSearchActive ? 'search-active' : ''}`}>
-
                     {isSearchActive && (
                         <button className="close-search-btn" onClick={closeSearch}>
                             <FiX />
                         </button>
                     )}
 
-                    {/* Prevenimos el submit por defecto */}
                     <form className="search-container" onClick={() => setIsSearchActive(true)} onSubmit={(e) => e.preventDefault()}>
                         <FiSearch className="search-icon left-icon" />
                         <input
@@ -129,11 +128,32 @@ const Header = ({ toggleSidebar }) => {
                 </div>
             )}
 
+            {/* --- ACCIONES PARA LA VISTA DE CATEGORÍAS --- */}
+            {isCategoryList && (
+                <div className="header-actions">
+                    <Link className="btn-add-header" to="/categories/new">
+                        <FiPlus className="add-icon" />
+                        <span className="btn-text">Agregar Categoría</span>
+                    </Link>
+                </div>
+            )}
+
+            {/* --- ACCIONES PARA LA VISTA INDIVIDUAL DE PRODUCTOS --- */}
             {isProductView && (
                 <div className="header-actions">
                     <button className="btn-delete-header" onClick={handleDeleteProduct}>
                         Eliminar
                     </button>
+                </div>
+            )}
+
+            {/* --- ACCIONES PARA LA VISTA DE TIENDAS --- */}
+            {isStoreList && (
+                <div className="header-actions">
+                    <Link className="btn-add-header" to="/tienda/new">
+                        <FiPlus className="add-icon" />
+                        <span className="btn-text">Agregar Tienda</span>
+                    </Link>
                 </div>
             )}
 

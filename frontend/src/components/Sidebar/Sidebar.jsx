@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { FaHome, FaBoxOpen, FaUserCircle } from "react-icons/fa";
-import { MdStore } from "react-icons/md";
+import { MdStore, MdCategory } from "react-icons/md"; // Agregamos MdCategory acá
 import logo from "../../assets/logo.png";
 import "./Sidebar.css";
 
@@ -12,6 +12,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     const navLinks = [
         { to: "/", text: "Inicio", icon: <FaHome /> },
         { to: "/products", text: "Productos", icon: <FaBoxOpen /> },
+        { to: "/categories", text: "Categorías", icon: <MdCategory /> }, // <-- Agregado acá
         { to: "/tienda", text: "Tiendas", icon: <MdStore /> },
     ];
 

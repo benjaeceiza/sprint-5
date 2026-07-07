@@ -1,0 +1,160 @@
+
+
+.category-view-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.loading-spinner {
+    font-size: 2rem;
+    color: #E0E3E6;
+    animation: spin 1s linear infinite;
+}
+
+/* Ícono grande del encabezado */
+.category-icon-large {
+    width: 90px;
+    height: 90px;
+    background-color: #1A1D21;
+    border: 3px solid #2C3036;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-icon-large .placeholder-icon {
+    font-size: 3.5rem;
+    color: #8E9197;
+}
+
+.error-alert {
+    color: #EC1C24;
+    margin-bottom: 15px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Botones de acción general */
+.action-buttons-end {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-cancel {
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #4a4d52;
+    border: 1px solid #1A1D21;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+.btn-cancel.active {
+    color: #E0E3E6;
+    border-color: #2C3036;
+    cursor: pointer;
+}
+
+.btn-save {
+    padding: 12px 32px;
+    background-color: #2C3036;
+    color: #8E9197;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+}
+
+.btn-save.active {
+    background-color: #E0E3E6; 
+    color: #1A1D21; 
+    cursor: pointer;
+}
+
+.btn-save.active:hover {
+    background-color: #FFF;
+}
+
+/* --- ZONA PELIGROSA --- */
+.danger-zone {
+    background-color: rgba(236, 28, 36, 0.04); 
+    border: 1px solid rgba(236, 28, 36, 0.2) !important;
+    border-radius: 12px; 
+    padding: 25px; 
+    margin-top: 40px;
+}
+
+.danger-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.danger-icon {
+    color: #EC1C24;
+    font-size: 1.4rem;
+}
+
+.danger-title {
+    color: #EC1C24 !important;
+    margin: 0 !important;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.danger-text {
+    color: #8E9197;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.blocked-delete-msg {
+    background-color: #1A1D21; 
+    color: #E0E3E6;
+    padding: 16px 20px;
+    border-radius: 8px;
+    border-left: 4px solid #8E9197;
+    font-size: 0.95rem;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-delete-full {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px;
+    background-color: transparent;
+    color: #EC1C24;
+    border: 1px solid rgba(236, 28, 36, 0.4); 
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-delete-full:hover {
+    background-color: #EC1C24;
+    color: #FFF;
+    border-color: #EC1C24;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}

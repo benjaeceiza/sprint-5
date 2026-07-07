@@ -1,0 +1,127 @@
+
+
+/* Ocupa todo el ancho disponible igual que los productos */
+.categories-list-container {
+    width: 100%;
+    padding: 20px 0;
+    color: #E0E3E6;
+}
+
+/* Cabecera alineada a los extremos */
+.categories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.categories-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+
+.btn-add-outline {
+    display: inline-flex;
+    align-items: center;
+    background-color: #2C3036;
+    color: #E0E3E6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-add-outline:hover {
+    background-color: #383d44;
+    color: #FFF;
+}
+
+/* Contenedor de las tarjetas */
+.categories-cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; 
+}
+
+
+.category-individual-card {
+    background-color: #1A1D21;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    max-width: 1200px; 
+
+}
+
+.category-individual-card:hover {
+    background-color: #23272d;
+}
+
+/* Parte izquierda (Ícono + Textos) */
+.category-item-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.category-icon-wrapper {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2C3036;
+}
+
+.category-icon {
+    font-size: 1.5rem;
+    color: #8E9197;
+}
+
+.category-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-name {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #E0E3E6;
+}
+
+/* Agregué el hashtag con el ID para que se vea igual que el #1001 del producto */
+.category-slug {
+    font-size: 0.85rem;
+    color: #8E9197;
+    margin-top: 4px;
+}
+
+/* Parte derecha (Flecha) */
+.category-item-right {
+    display: flex;
+    align-items: center;
+}
+
+.arrow-icon {
+  color: #8E9197;
+  font-size: 1.5rem;
+}
+
+.empty-state, .error-message {
+    padding: 30px;
+    text-align: center;
+    color: #8E9197;
+    font-size: 1rem;
+}

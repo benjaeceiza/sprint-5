@@ -5,9 +5,9 @@ import './Profile.css';
 const Profile = () => {
     // 1. Datos simulados del usuario administrador (sacamos el avatarUrl)
     const defaultProfile = {
-        firstName: 'Juan Pablo',
-        lastName: 'Gómez',
-        email: 'juan.gomez@ecommerce.com',
+        firstName: 'Usuario',
+        lastName: 'Admin',
+        email: 'usuario.admin@ecommerce.com',
         phone: '+54 2657 889900',
         role: 'Administrador Principal',
         joinedDate: 'Octubre 2025'

@@ -1,0 +1,96 @@
+.stores-list-container {
+    width: 100%;
+    padding: 20px 0;
+    color: #E0E3E6;
+}
+
+.center-spinner {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.loading-spinner {
+    font-size: 2rem;
+    color: #E0E3E6;
+    animation: spin 1s linear infinite;
+}
+
+.stores-cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.store-individual-card {
+    background-color: #1A1D21;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+        width: 100%;
+    max-width: 1200px;
+}
+
+.store-individual-card:hover {
+    background-color: #23272d;
+}
+
+.store-item-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.store-icon-wrapper {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2C3036;
+}
+
+.store-icon {
+    font-size: 1.5rem;
+    color: #8E9197;
+}
+
+.store-individual-card:hover .store-icon {
+    color: #EC1C24;
+}
+
+.store-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.store-title-text {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #E0E3E6;
+}
+
+.store-slug-text {
+    font-size: 0.85rem;
+    color: #8E9197;
+    margin-top: 4px;
+}
+
+.arrow-icon {
+    color: #4a4d52;
+    font-size: 1.2rem;
+}
+
+.empty-state {
+    padding: 30px;
+    text-align: center;
+    color: #8E9197;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
